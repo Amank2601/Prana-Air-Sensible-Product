@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prana Air - Smart Indoor Air Quality Monitor</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=north_east" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'prana-green': '#7CB342',
+                        'prana-dark': '#2D3748'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white m-0">
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeMobileMenu()"></div>
+        
+        <!-- Menu Panel -->
+        <div class="absolute right-0 top-0 h-full w-80 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out" id="menuPanel">
+            <div class="p-6">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-8">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/prana-air-logo-iqbJwbg4LsjFPc9bYz3kftbIq06Ual.webp" alt="Prana Air Logo" class="h-8 w-auto">
+                    <button onclick="closeMobileMenu()" class="p-2 text-gray-600 hover:text-gray-800">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Menu Items -->
+                <nav class="space-y-4">
+                    <div class="border-b border-gray-100 pb-4">
+                        <button class="flex items-center justify-between w-full text-left text-gray-800 hover:text-prana-green py-2">
+                            <span class="font-medium">Solutions</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="border-b border-gray-100 pb-4">
+                        <button class="flex items-center justify-between w-full text-left text-gray-800 hover:text-prana-green py-2">
+                            <span class="font-medium">Products</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="border-b border-gray-100 pb-4">
+                        <button class="flex items-center justify-between w-full text-left text-gray-800 hover:text-prana-green py-2">
+                            <span class="font-medium">Case Studies</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="border-b border-gray-100 pb-4">
+                        <button class="flex items-center justify-between w-full text-left text-gray-800 hover:text-prana-green py-2">
+                            <span class="font-medium">Know What</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="border-b border-gray-100 pb-4">
+                        <button class="flex items-center justify-between w-full text-left text-gray-800 hover:text-prana-green py-2">
+                            <span class="font-medium">About</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Get in touch button -->
+                    <div class="pt-4">
+                        <button class="w-full bg-prana-green text-white px-6 py-3 rounded-full text-center font-medium hover:bg-green-600 transition-colors">
+                            Get in touch
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Currency Dropdown -->
+                    <div class="border-b border-gray-100 pb-4">
+                        <button onclick="toggleMobileCurrencyDropdown()" class="flex items-center justify-between w-full text-left text-gray-800 hover:text-prana-green py-2">
+                            <span class="font-medium" id="selectedMobileCurrency">INR, ₹</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" id="mobileCurrencyArrow" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Mobile Currency Dropdown Menu -->
+                        <div id="mobileCurrencyDropdown" class="hidden mt-2 ml-4 space-y-2">
+                            <button onclick="selectMobileCurrency('INR', '₹')" class="block w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                INR, ₹
+                            </button>
+                            <button onclick="selectMobileCurrency('USD', '$')" class="block w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                USD, $
+                            </button>
+                            <button onclick="selectMobileCurrency('EUR', '€')" class="block w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                EUR, €
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Global/Language Dropdown -->
+                    <div class="border-b border-gray-100 pb-4">
+                        <button onclick="toggleMobileLanguageDropdown()" class="flex items-center justify-between w-full text-left text-gray-800 hover:text-prana-green py-2">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-medium" id="selectedMobileLanguage">Global</span>
+                            </div>
+                            <svg class="w-4 h-4 transition-transform duration-200" id="mobileLanguageArrow" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Mobile Language Dropdown Menu -->
+                        <div id="mobileLanguageDropdown" class="hidden mt-2 ml-4 space-y-2 max-h-48 overflow-y-auto">
+                            <button onclick="selectMobileLanguage('Hindi', 'in')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-in w-4 h-3"></i>
+                                <span>Hindi</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('French', 'fr')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-fr w-4 h-3"></i>
+                                <span>French</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('Russian', 'ru')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-ru w-4 h-3"></i>
+                                <span>Russian</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('German', 'de')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-de w-4 h-3"></i>
+                                <span>German</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('Spanish', 'es')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-es w-4 h-3"></i>
+                                <span>Spanish</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('Japanese', 'jp')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-jp w-4 h-3"></i>
+                                <span>Japanese</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('US English', 'us')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-us w-4 h-3"></i>
+                                <span>US English</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('Portuguese', 'pt')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-pt w-4 h-3"></i>
+                                <span>Portuguese</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('IND English', 'in')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-in w-4 h-3"></i>
+                                <span>IND English</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('UK English', 'gb')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-gb w-4 h-3"></i>
+                                <span>UK English</span>
+                            </button>
+                            <button onclick="selectMobileLanguage('Canada English', 'ca')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-prana-green">
+                                <i class="flag-icon flag-icon-ca w-4 h-3"></i>
+                                <span>Canada English</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Login -->
+                    <div class="pt-2">
+                        <button class="text-prana-green hover:text-green-600 font-medium">
+                            Login
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 relative z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/prana-air-logo-iqbJwbg4LsjFPc9bYz3kftbIq06Ual.webp" alt="Prana Air Logo" class="h-10 w-auto">
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <div class="flex items-center space-x-1 text-gray-700 hover:text-prana-green cursor-pointer">
+                        <span>Solutions</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center space-x-1 text-gray-700 hover:text-prana-green cursor-pointer">
+                        <span>Products</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center space-x-1 text-gray-700 hover:text-prana-green cursor-pointer">
+                        <span>Case Studies</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center space-x-1 text-gray-700 hover:text-prana-green cursor-pointer">
+                        <span>Know What</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="flex items-center space-x-1 text-gray-700 hover:text-prana-green cursor-pointer">
+                        <span>About</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </nav>
+
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center space-x-4">
+                  <a href="#getintouch">
+                    <button class="bg-prana-green text-white px-4 py-2 rounded-3xl text-sm font-medium hover:bg-green-600 transition-colors">
+                        Get in touch
+                    </button>
+                  </a>
+                    
+                    
+                    <!-- Desktop Global/Language Dropdown -->
+                    <div class="relative" onmouseenter="showLanguageDropdown()" onmouseleave="hideLanguageDropdown()">
+                        <div class="flex items-center space-x-1 text-gray-700 hover:text-prana-green cursor-pointer">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-sm" id="selectedLanguage">Global</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Desktop Language Dropdown Menu -->
+                        <div id="languageDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 hidden z-50 max-h-64 overflow-y-auto">
+                            <div class="py-1">
+                                <button onclick="selectLanguage('Hindi', 'in')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-in w-4 h-3"></i>
+                                    <span>Hindi</span>
+                                </button>
+                                <button onclick="selectLanguage('French', 'fr')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-fr w-4 h-3"></i>
+                                    <span>French</span>
+                                </button>
+                                <button onclick="selectLanguage('Russian', 'ru')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-ru w-4 h-3"></i>
+                                    <span>Russian</span>
+                                </button>
+                                <button onclick="selectLanguage('German', 'de')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-de w-4 h-3"></i>
+                                    <span>German</span>
+                                </button>
+                                <button onclick="selectLanguage('Spanish', 'es')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-es w-4 h-3"></i>
+                                    <span>Spanish</span>
+                                </button>
+                                <button onclick="selectLanguage('Japanese', 'jp')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-jp w-4 h-3"></i>
+                                    <span>Japanese</span>
+                                </button>
+                                <button onclick="selectLanguage('US English', 'us')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-us w-4 h-3"></i>
+                                    <span>US English</span>
+                                </button>
+                                <button onclick="selectLanguage('Portuguese', 'pt')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-pt w-4 h-3"></i>
+                                    <span>Portuguese</span>
+                                </button>
+                                <button onclick="selectLanguage('IND English', 'in')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-in w-4 h-3"></i>
+                                    <span>IND English</span>
+                                </button>
+                                <button onclick="selectLanguage('UK English', 'gb')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-gb w-4 h-3"></i>
+                                    <span>UK English</span>
+                                </button>
+                                <button onclick="selectLanguage('Canada English', 'ca')" class="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    <i class="flag-icon flag-icon-ca w-4 h-3"></i>
+                                    <span>Canada English</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Currency Dropdown -->
+                    <div class="relative">
+                        <button onclick="toggleCurrencyDropdown()" class="flex items-center space-x-1 text-gray-700 hover:text-prana-green cursor-pointer">
+                            <span class="text-sm" id="selectedCurrency">USD,$</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" id="currencyArrow" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="currencyDropdown" class="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg border border-gray-200 hidden z-50">
+                            <div class="py-1">
+                                <button onclick="selectCurrency('INR', '₹')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    INR, ₹
+                                </button>
+                                <button onclick="selectCurrency('USD', '$')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    USD, $
+                                </button>
+                                <button onclick="selectCurrency('EUR', '€')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-prana-green">
+                                    EUR, €
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5-6m0 0L4 5M7 13h10m0 0v6a1 1 0 01-1 1H8a1 1 0 01-1-1v-6m10 0V9a1 1 0 00-1-1H8a1 1 0 00-1 1v4"/>
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-prana-green text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </div>
+                    <button class="text-gray-700 hover:text-prana-green text-sm font-medium">Login</button>
+                </div>
+
+                <!-- Mobile Actions -->
+                <div class="lg:hidden flex items-center space-x-4">
+                    <div class="relative">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5-6m0 0L4 5M7 13h10m0 0v6a1 1 0 01-1 1H8a1 1 0 01-1-1v-6m10 0V9a1 1 0 00-1-1H8a1 1 0 00-1 1v4"/>
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-prana-green text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </div>
+                    <div class="flex items-center space-x-1 text-gray-700">
+                        <span class="text-sm" id="mobileHeaderCurrency">INR</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <button onclick="openMobileMenu()" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="relative min-h-screen">
+        <!-- Background Images - Responsive -->
+        <div class="absolute inset-0 z-0">
+          <!-- Desktop Background -->
+          <div class="hidden lg:block absolute inset-0">
+            <img src="images/product.png" alt="Indoor air quality monitor on wooden desk with laptop" class="w-full h-full object-cover">
+          </div>
+          
+          <!-- Mobile Background -->
+          <div class="lg:hidden absolute inset-0">
+            <img src="images/productonmobile.png" alt="Close-up view of air quality monitor device" class="w-full h-full object-cover object-contain">
+          </div>
+        </div>
+
+        <!-- Linear Gradient Overlay -->
+        <div class="absolute inset-0 z-5 bg-gradient-to-r from-black/80 via-black/50 to-transparent lg:bg-gradient-to-r lg:from-black/70 lg:via-black/40 lg:to-black/20"></div>
+        
+        <!-- Content Overlay -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[120vh] lg:min-h-0">
+                <!-- Mobile Product Image -->
+                <div class="flex justify-center lg:hidden order-1 lg:order-2">
+                    <div class="relative">
+                        <img src="images/sensiblepro.png" alt="Prana Air Quality Monitor Device" class="w-64 sm:w-80 lg:w-96 h-auto object-cover transform translate-y-1/2">
+                    </div>
+                </div>
+               
+                <!-- Text Content -->
+                <div class="text-white order-2 lg:order-1">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 lg:mb-6">
+                        <span class="hidden lg:block font-normal font-sans pt-10">Your Smart Solution</span>
+                        <span class="hidden lg:block font-normal font-sans">for Indoor Air Quality</span>
+                        <span class="lg:hidden font-medium">A handy little indoor air monitor that's super smart!</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg lg:text-xl text-gray-200 mb-6 lg:mb-8 max-w-lg">
+                        <span class="hidden lg:block font-medium">A compact indoor air monitor designed to keep you informed about the air you breathe—anytime, anywhere.</span>
+                        <span class="lg:hidden font-medium">Keep track of indoor air quality along with ambient indoor & outdoor pollutant</span>
+                    </p>
+                    
+                    <div class="mb-6 lg:mb-8">
+                        <span class="text-2xl lg:text-3xl font-bold text-green-400" id="priceDisplay">₹59,990.00</span>
+                    </div>
+                    
+                    <button class="bg-prana-green hover:bg-green-600 text-white px-6 lg:px-8 py-3 rounded-md font-semibold text-base lg:text-lg transition-colors duration-200 flex items-center space-x-2">
+                        <span>Buy Now</span>
+                        <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Product Image -->
+                <div class="hidden lg:flex justify-center order-2">
+                    <div class="relative">
+                        <!-- <img src="sensiblepro.png" alt="Prana Air Quality Monitor Device" class="w-96 h-auto object-cover"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Features Section - Updated to match the image -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 bg-[radial-gradient(ellipse_at_center,_#e6f5e4_40%,_white_100%)]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Main Feature Card - Left Side -->
+                <div class="lg:row-span-2 bg-white rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center text-center border border-gray-200">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Sensible</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Monitor</h2>
+                        <h2 class="text-3xl font-bold text-prana-green">Features</h2>
+                    </div>
+                    <button class="bg-prana-green hover:bg-green-600 text-white px-8 py-3 rounded-full font-semibold text-lg transition-colors duration-200 flex items-center space-x-2 shadow-lg">
+                        <span>Buy Now</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Feature Cards - Right Side Grid -->
+                <!-- Real-Time AQI Data -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800 leading-tight">Real-Time AQI Data</h3>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-6 h-6 text-prana-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">Get instant readings for PM2.5, PM10, CO, CO2, O3, HCHO and TVOCs.</p>
+                </div>
+
+                <!-- Historical Data & Trends -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800 leading-tight">Historical Data & Trends</h3>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-6 h-6 text-prana-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">Hourly, daily and monthly charts reveal patterns and improvements.</p>
+                </div>
+
+                <!-- Portable & Battery-Powered -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800 leading-tight">Portable & Battery-Powered</h3>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-6 h-6 text-prana-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">Lightweight design lets you monitor any room or workspace.</p>
+                </div>
+
+                <!-- Onboard Data Storage -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800 leading-tight">Onboard Data Storage</h3>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-6 h-6 text-prana-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">Micro SD card holds months of readings for easy access.</p>
+                </div>
+
+                <!-- Built-In Display & Alerts -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800 leading-tight">Built-In Display & Alerts</h3>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-6 h-6 text-prana-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">Color-coded warnings and clear health tips help you take action.</p>
+                </div>
+
+                <!-- Type-C USB Powered -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-800 leading-tight">Type-C USB Powered</h3>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
+                            <svg class="w-6 h-6 text-prana-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">Simple plug-and-play setup— built-in battery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section - Updated to match the provided image -->
+ <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="tech-section max-w-7xl mx-auto">
+            <!-- Section Title -->
+            <div class="head text-center mb-12 w-[337px] h-[62px] sm:w-[383px] sm:h-[96px] mx-auto">
+                <h2 class="text-3xl lg:text-4xl font-medium text-[30px] sm:text-[40px] leading-[48px] font-sans text-gray-800 mb-4" style="letter-spacing: -3%;">
+                    What Technology is Used in Sensible ?
+                </h2>
+                <div class="w-24 h-1 bg-prana-green mx-auto"></div>
+            </div>
+
+            <!-- Technology Content -->
+            <div class="content grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-6 border border-black/10 rounded-3xl">
+                
+                <!-- Right side first on small screens -->
+                <div class="flex justify-center order-1 lg:order-2">
+                    <img src="images/ele_chem_sensor.png" alt="Electrochemical Sensor Diagram" 
+                         class="w-full max-w-md h-auto object-contain">
+                </div>
+
+                <!-- Left side text -->
+                <div class="space-y-6 order-2 lg:order-1">
+                    <!-- Large screens text -->
+                    <div class="hidden sm:block">
+                        <p class="text-gray-600 leading-relaxed">
+                            Our mission is to deliver fast, reliable air‑quality data in for quick actions and better air quality for everyone.
+                        </p>
+
+                        <div class="space-y-4 mt-[20px]">
+                            <p class="text-gray-700 leading-relaxed">
+                                Thus, Sensible is packed with <span class="font-semibold text-gray-800">Electrochemical sensors</span> react with gases like CO and ozone for instant readings, while <span class="font-semibold text-gray-800">catalytic sensors</span> detect combustible fumes by measuring tiny heat changes. <span class="font-semibold text-gray-800">Optical sensors</span>—including <span class="font-semibold text-gray-800">NDIR for accurate CO₂ tracking</span> and <span class="font-semibold text-gray-800">metal oxide semiconductors</span> for VOC detection—keep tabs on volatile pollutants. A built-in <span class="font-semibold text-gray-800">spectroscopy module</span> then uses light signatures to spot even trace chemicals. The result is a complete, up-to-the-minute view of your indoor air—no jargon, just actionable insights so you can breathe easy.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Small screens text -->
+                    <div class="block sm:hidden">
+                        <p class="text-gray-600 leading-relaxed">
+                            Sensible uses advanced sensor technologies like electrochemical, catalytic, optical (NDIR, PID, metal oxide semiconductors), and spectroscopy to provide accurate, real-time air quality data.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mt-4">
+                            These technologies work in harmony to ensure that the data you receive is both reliable and actionable, helping you maintain cleaner, healthier indoor air.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section>
+        <div class="relative">
+            <!-- Green Box first on mobile -->
+            <div class="box-bg p-6 sm:absolute sm:top-0 sm:left-0 w-[100%] sm:w-[580px] h-[420px] sm:h-[433.5px] bg-[#85C469] z-20">
+                <div class="box-bg-1 text-gray-50 ml-[40px] mt-[75px] sm:ml-[111px] sm:mt-[75px] mt-6 mx-auto">
+                    
+                    <!-- Desktop view -->
+                    <div class="hidden sm:block">
+                        <h1 class="text-2xl font-normal">
+                            Monitor What Matters.
+                        </h1>
+                        <h1 class="text-2xl font-normal">
+                            Breathe Better with Sensible.
+                        </h1>
+                        <p class="text-sm mb-6 mt-[25px] w-[338px] h-[72px] font-normal text-[16px]">
+                            Here grab your own portable monitor, Sensible, that delivers precise AQI in seconds—instantly revealing the air you are breathing.
+                        </p>
+                    
+                        
+                    </div>
+
+                    <!-- Mobile view -->
+                    <div class="block sm:hidden text-center ml-[-10px]">
+                        <h1 class="text-2xl font-normal">
+                            Monitor What Matters.<br>Breathe Better with Sensible+.
+                        </h1>
+                        <div class="block w-[249px] h-[42px] ml-[-10px]">
+                            <p class=" text-gray-50 mb-6 mt-4">
+                            Track real-time air quality hourly, weekly, and monthly.
+                            </p>
+                        </div>
+                        
+                    </div>
+
+                    <button class="text-gray-50 font-semibold rounded-md mt-[43px]">
+                    <!-- Desktop button -->
+                        <img src="images/frame 4 buy.png" alt="buy now button" class="hidden sm:block">
+                    <!-- Mobile button -->
+                        <img src="images/frame 4 buy mobile.png" alt="buy now button" class="block sm:hidden ml-[-7px]">
+                    </button>
+
+                </div>  
+            </div>
+
+            <!-- Image comes after green box on mobile -->
+            <img src="images/green back.png" alt="img" 
+                class="hidden sm:block w-full object-cover">
+            <img src="images/green top.png" alt="img" 
+                class="sm:hidden  max-w-none w-[100%] h-[420px] object-cover">
+        </div>
+    </section>
+ <section class="flex flex-col lg:flex-row w-full">
+    <!-- Left Content -->
+    <div class="w-full lg:w-[580px] bg-black text-white px-6 py-10 lg:px-12 lg:py-14 flex flex-col justify-center">
+      <h1 class="text-3xl lg:text-4xl font-light text-center lg:text-left">
+        <span class="text-[#85C469] font-medium">Parameters</span> Sensible<br class="hidden lg:block" />
+        Measures for You
+      </h1>
+
+      <!-- Icons Section -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 mt-10 lg:w-[850px] mx-auto lg:mx-0 relative z-[1]">
+        <!-- Each icon block -->
+        <div class="flex items-center gap-4">
+          <img src="images/PARTICLE COUNT (0.5).png" alt="PM" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">Particulate Matter</p>
+            <p class="text-xs text-gray-400">(PM1, PM10, PM2.5)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="images/CO2.png" alt="CO" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">Carbon Monoxide</p>
+            <p class="text-xs text-gray-400">(CO)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="images/CO2.png" alt="CO2" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">Carbon Dioxide</p>
+            <p class="text-xs text-gray-400">(CO2)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="images/HCHO.png" alt="HCHO" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">Formaldehyde</p>
+            <p class="text-xs text-gray-400">(HCHO)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="images/TVOC@2x.png" alt="TVOC" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">TVOC</p>
+            <p class="text-xs text-gray-400">(Total Volatile Organic Compounds)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="images/O3.png" alt="O3" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">Ozone</p>
+            <p class="text-xs text-gray-400">(O3)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="images/Temp.png" alt="Temperature" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">Temperature</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="images/Humidity.png" alt="Humidity" class="h-[53px] w-[53px] bg-gray-600 rounded-full" />
+          <div>
+            <p class="text-sm font-semibold">Humidity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Image for Desktop -->
+    <div class="hidden lg:block w-[685px] h-full relative">
+      <img src="images/black back.png" alt="Device" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black/100"></div>
+    </div>
+
+    <!-- Mobile View Background + Device with Glow -->
+    <div class="relative block lg:hidden w-full mt-10">
+      <img src="images/black top.png" alt="Background" class="w-full object-cover" />
+
+      <!-- Black Radial Gradient Glow -->
+      <div
+        class="absolute left-1/2 top-1/2 w-[300px] h-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 z-0"
+        style="background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 0%, transparent 60%);">
+      </div>
+
+      <!-- Device Image -->
+      <img src="images/sensiblepro.png" alt="Device" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2/3 max-w-[280px] z-10" />
+    </div>
+  </section>
+   <section class="min-h-[1900px] sm:min-h-screen px-4 py-10 sm:px-0">
+    
+    <!-- Heading -->
+    <div class="w-full max-w-[1175px] mx-auto mb-8 text-center sm:text-left sm:ml-[px]">
+      <div class="w-[383px] h-[106px] lg:mt-[113px] lg:ml-[105px] lg:mb-[32px] ml-0 mt-[113px] mb-[18px]">
+            <h1 class="font-medium text-[40px] font-nunito-sans,Sans,Poppins text-[#263D4F]">How Accurate is the Sensible Monitor?</h1>
+        </div
+    </div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-100% mx-auto border-2 border-black-100 border-solid rounded-[30px] px-4 py-6 sm:p-0">
+
+      <!-- Row 1 -->
+      <div class="flex flex-col sm:flex-row border-2 border-black-100 border-solid rounded-[22px] bg-[#F2F6F1] p-4 sm:p-0 sm:mx-[26px] sm:mt-[32px]">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start">
+          <img src="images/monitor acc.png" alt="monitor" class="h-[150px] sm:h-[240px] w-full max-w-[355px] mb-4 sm:mb-0 sm:my-[12px] sm:ml-[13px]">
+          <img src="images/sens monitor acc.png" alt="sensible monitor" class="h-[150px] sm:h-[240px] w-full max-w-[293px] sm:ml-[14px] sm:my-[12px]">
+        </div>
+        <div class="w-full sm:w-[359px] h-auto sm:h-[96px] mt-6 sm:my-[85px] sm:ml-[65px] sm:mr-[29px] text-center sm:text-left">
+          <p class="font-light text-[16px] leading-[24px]">
+            Here <b>Sensible air quality monitor</b> tested alongside a high-end professional device, and the readings matched closely. This shows that <b>Sensible delivers accurate, real-time air quality data</b> you can trust.
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="flex flex-col sm:flex-row border-2 border-black-100 border-solid rounded-[22px] bg-[#F2F6F1] mt-6 sm:mt-[32px] sm:mx-[26px] p-4 sm:p-0">
+        <div class="w-full sm:w-[404px] mt-4 sm:my-[85px] sm:ml-[105px] text-center sm:text-left">
+          <p class="font-light text-[16px] leading-[24px]">
+            With Sensible, you get the <b>precision of professional equipment</b> in a <b>compact</b> and <b>affordable monitor</b>—perfect for <b>homes, offices, schools, and more.</b>
+          </p>
+        </div> 
+        <a href="#" class="mt-4 sm:mt-[5px] sm:ml-[196px] sm:mr-[20px] mx-auto">
+          <img src="images/monitor acc 3.png" alt="monitor" class="h-[150px] sm:h-[230px] w-full max-w-[400px]">
+        </a>
+      </div>
+
+      <!-- Row 3 (Video Section) -->
+      <div class="relative w-[296px] h-[289px] sm:w-[96%] sm:h-[556px] mt-6 sm:mt-[44px] rounded-[20px] overflow-hidden sm:mx-[26px] mb-[25px] mx-auto">
+        <img src="images/affordable monitor.png" alt="pic of monitors" class="w-full h-full object-cover rounded-[20px]">
+
+        <!-- Floating Box -->
+        <div class="absolute bottom-0 left-0 w-full h-[117px] bg-gray-400 bg-opacity-80 backdrop-blur-xl border border-gray-100 rounded-b-[20px] z-10 px-6 py-4 flex items-center">
+          <p class="text-white text-sm sm:text-lg font-medium">
+            Smallest, Affordable &<br class="hidden sm:block">Portable Air Quality Monitor
+          </p>
+          <div class="ml-auto text-white text-xl sm:text-2xl">
+            <a href="https://youtu.be/2EIYZoY9MPw?si=k7EpBZBnYxM4PRRt">
+              <i class="fas fa-play-circle"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+<div class="ml-[108px] mt-[133px] w-[350px]">
+  <ul id="tabs" class="flex space-x-6">
+    <li data-target="#app" class="text-gray-400 hover:text-black font-semibold cursor-pointer tab-item active text-black">APP</li>
+    <li data-target="#tv" class="text-gray-400 hover:text-black font-semibold cursor-pointer tab-item">TV</li>
+    <li data-target="#dashboard" class="text-gray-400 hover:text-black font-semibold cursor-pointer tab-item">Dashboard</li>
+  </ul>
+</div>
+
+<!-- APP Section -->
+<div id="app" class="tab-content fade active">
+  <div class="relative overflow-visible mt-[80px]">
+    <section class="bg-[#0D1F14] px-8 py-16 rounded-t-[40px] flex flex-col lg:flex-row items-center justify-between relative overflow-visible h-[645px] w-screen lg:h-[402px] lg:w-screen">
+      <div class="text-white z-10 ml-0 lg:ml-[100px] w-full lg:w-[500px] text-center lg:text-left">
+        <h2 class="text-[24px] lg:text-[32px] font-semibold leading-tight">
+          Stay Connected to Your Air No<br> Matter Where You Are!
+        </h2>
+        <div class="w-full lg:w-[340px] mx-auto lg:mx-0">
+          <p class="mt-4 text-[18px] lg:text-[24px] text-gray-300 font-normal">
+            Instant AQI updates, custom alerts and full device control—all from your smartphone.
+          </p>
+        </div>
+        <div class="flex justify-center lg:justify-start mt-6 space-x-4">
+          <a href="https://apps.apple.com/tt/app/aqi/id1439684571"><img src="appstore.png" alt="App Store" class="h-12"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.aqi.data"><img src="play games.png" alt="Google Play" class="h-12"></a>
+        </div>
+      </div>
+      <div class="z-20 mt-6 lg:mt-0 lg:absolute lg:right-[200px] lg:top-[-60px]">
+        <img src="images/phone.png" alt="Phone" class="h-[300px] lg:h-[460px] object-contain mx-auto lg:mx-0">
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- TV Section -->
+<div id="tv" class="tab-content fade">
+  <section class="bg-[#0D1F14] px-8 py-16 rounded-t-[40px] flex flex-col lg:flex-row items-center justify-between relative overflow-visible mt-[80px] h-[590px] w-full lg:h-[402px] lg:w-full">
+    <div class="text-white z-10 ml-0 lg:ml-[100px] w-full lg:w-[500px] text-center lg:text-left">
+      <h2 class="text-[24px] lg:text-[32px] font-semibold leading-tight">
+        Stream Real-Time Air Quality<br>Data on Your Smart TV!
+      </h2>
+      <div class="w-full lg:w-[340px] mx-auto lg:mx-0">
+        <p class="mt-4 text-[18px] lg:text-[24px] text-gray-300 font-normal">
+          Broadcast live AQI, trend lines and health alerts on screens in lobbies, offices or homes.
+        </p>
+      </div>
+      <div class="flex justify-center lg:justify-start mt-6 space-x-4">
+        <a href="https://apps.apple.com/tt/app/aqi/id1439684571"><img src="appstore.png" alt="App Store" class="h-12"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.aqi.data"><img src="play games.png" alt="Google Play" class="h-12"></a>
+      </div>
+    </div>
+    <div class="z-20 mt-6 lg:mt-0 lg:absolute lg:right-[200px] lg:top-[-60px]">
+      <img src="images/TV.png" alt="TV View" class="h-[300px] lg:h-[460px] object-contain mx-auto lg:ml-[510px]">
+    </div>
+  </section>
+</div>
+
+<!-- Dashboard Section -->
+<div id="dashboard" class="tab-content fade">
+  <section class="bg-[#0D1F14] px-8 py-16 rounded-t-[40px] flex flex-col lg:flex-row items-center justify-between relative overflow-visible mt-[80px] h-[590px] w-full lg:h-[402px] lg:w-full">
+    <div class="text-white z-10 ml-0 lg:ml-[100px] w-full lg:w-[340px] text-center lg:text-left">
+      <h2 class="text-[24px] lg:text-[32px] font-semibold leading-tight">
+        All-In-One Air Quality Command Center!
+      </h2>
+      <div class="w-full lg:w-[340px] mx-auto lg:mx-0">
+        <p class="mt-4 text-[18px] lg:text-[24px] text-gray-300 font-normal">
+          Monitor live data, explore trends with interactive charts and manage multiple monitors in a unified view.
+        </p>
+      </div>
+      <div class="flex justify-center lg:justify-start mt-6 space-x-4">
+        <a href="https://apps.apple.com/tt/app/aqi/id1439684571"><img src="appstore.png" alt="App Store" class="h-12"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.aqi.data"><img src="play games.png" alt="Google Play" class="h-12"></a>
+      </div>
+    </div>
+    <div class="z-20 mt-6 lg:mt-0 lg:absolute lg:right-[200px] lg:top-[20px]">
+      <img src="images/laptop.png" alt="Laptop View" class="h-[300px] lg:h-[460px] object-contain mx-auto lg:ml-[420px]">
+    </div>
+  </section>
+</div>
+
+    <section>
+    <!-- Header -->
+    <div class="flex justify-between max-w-[1025px] h-[96px] mt-[153px] mx-auto px-4">
+      <div class="w-[360px]">
+        <h2 class="font-medium text-[40px] leading-[48px] tracking-[-3%]">
+          Solution Applications
+        </h2>
+      </div>
+
+      <div class="hidden md:flex space-x-2 items-center">
+        <button id="prevBtn" class="p-2 border rounded w-[68px] h-[42px]">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button id="nextBtn" class="p-2 border rounded w-[68px] h-[42px]">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div
+      id="carousel"
+      class="flex overflow-x-auto scroll-smooth scroll-px-4 snap-x snap-mandatory gap-4 px-4 mt-10"
+    >
+      <!-- Card Template Start -->
+      <!-- Repeat this for each card -->
+      <div class="flex-none w-[300px] snap-center">
+        <div class="w-[300px] h-[255px] -mb-[5px]">
+          <img src="images/offices.png" alt="" class="rounded-t-[12px]" />
+        </div>
+        <div class="w-[300px] h-[208px] border-2 border-black-100 border-solid border-b-0 bg-[linear-gradient(#666666_0%,#66666600_18%)] rounded-t-[12px]">
+          <div class="mt-[28px] ml-[22px] mr-[13px]">
+            <h2 class="font-semibold">Offices & Workspaces</h2>
+          </div>
+          <div class="w-[244px] mt-[10px] ml-[22px]">
+            <p>
+              Keep your team breathing easy—Sensible tracks indoor pollutants in real time so you can maintain a healthy, productive workspace.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-none w-[300px] snap-center">
+        <div class="w-[300px] h-[255px] -mb-[5px]">
+          <img src="images/hotel.png" alt="" class="rounded-t-[12px]" />
+        </div>
+        <div class="w-[300px] h-[208px] border-2 border-black-100 border-solid border-b-0 bg-[linear-gradient(#666666_0%,#66666600_18%)] rounded-t-[12px]">
+          <div class="mt-[28px] ml-[22px] mr-[13px]">
+            <h2 class="font-semibold">Hotel</h2>
+          </div>
+          <div class="w-[244px] mt-[10px] ml-[22px]">
+            <p>
+              Use the air quality monitor to know the indoor pollution level in the office and keep your employees safe from breathing polluted air particles.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-none w-[300px] snap-center">
+        <div class="w-[300px] h-[255px] -mb-[5px]">
+          <img src="images/school.png" alt="" class="rounded-t-[12px]" />
+        </div>
+        <div class="w-[300px] h-[208px] border-2 border-black-100 border-solid border-b-0 bg-[linear-gradient(#666666_0%,#66666600_18%)] rounded-t-[12px]">
+          <div class="mt-[28px] ml-[22px] mr-[13px]">
+            <h2 class="font-semibold">School</h2>
+          </div>
+          <div class="w-[244px] mt-[10px] ml-[22px]">
+            <p>
+              Use the air quality monitor to know the indoor pollution level in the office and keep your employees safe from breathing polluted air particles.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-none w-[300px] snap-center">
+        <div class="w-[300px] h-[255px] -mb-[5px]">
+          <img src="images/hospital.png" alt="" class="rounded-t-[12px]" />
+        </div>
+        <div class="w-[300px] h-[255px] border-2 border-black-100 border-solid border-b-0 bg-[linear-gradient(#666666_0%,#66666600_18%)] rounded-t-[12px]">
+          <div class="mt-[28px] ml-[22px] mr-[13px]">
+            <h2 class="font-semibold">Hospital</h2>
+          </div>
+          <div class="w-[244px] mt-[10px] ml-[22px]">
+            <p>
+              Keep your team breathing easy—Sensible tracks indoor pollutants in real time so you can maintain a healthy, productive workspace.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-none w-[300px] snap-center">
+        <div class="w-[300px] h-[255px] -mb-[5px]">
+          <img src="images/factory.jpg" alt="" class="rounded-t-[12px] object-cover h-[255px]" />
+        </div>
+        <div class="w-[300px] h-[208px] border-2 border-black-100 border-solid border-b-0 bg-[linear-gradient(#666666_0%,#66666600_18%)] rounded-t-[12px]">
+          <div class="mt-[28px] ml-[22px] mr-[13px]">
+            <h2 class="font-semibold">Factory</h2>
+          </div>
+          <div class="w-[244px] mt-[10px] ml-[22px]">
+            <p>
+              Keep your team breathing easy—Sensible tracks indoor pollutants in real time so you can maintain a healthy, productive workspace.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-none w-[300px] snap-center">
+        <div class="w-[300px] h-[255px] -mb-[5px]">
+          <img src="images/college.png" alt="" class="rounded-t-[12px] object-cover h-[255px]" />
+        </div>
+        <div class="w-[300px] h-[208px] border-2 border-black-100 border-solid border-b-0 bg-[linear-gradient(#666666_0%,#66666600_18%)] rounded-t-[12px]">
+          <div class="mt-[28px] ml-[22px] mr-[13px]">
+            <h2 class="font-semibold">College & University</h2>
+          </div>
+          <div class="w-[244px] mt-[10px] ml-[22px]">
+            <p>
+              Keep your team breathing easy—Sensible tracks indoor pollutants in real time so you can maintain a healthy, productive workspace.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Card Template End -->
+    </div>
+
+    <!-- Mobile Dot Indicators -->
+    <div class="flex justify-center mt-4 md:hidden">
+      <div class="flex gap-2" id="mobileDots">
+        <span class="dot" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
+        <span class="dot" data-index="5"></span>
+      </div>
+    </div>
+  </section>
+    <!-- Technical Specification -->
+    <section>
+    <!-- Heading and Buttons -->
+    <div class="flex flex-col md:flex-row justify-between">
+      <div class="mt-[124px] lg:ml-[105px] ml-[35px] h-[102px] w-[341px]">
+        <h2 class="text-[40px] font-medium">Technical Specifications</h2>
+      </div>
+
+      <!-- Mobile Positioning -->
+      <div class="md:hidden ml-[30px] mt-4 flex gap-4">
+        <a href=""><img src="images/.brochure.png" alt=""></a>
+        <a href=""><img src="images/manual.png" alt=""></a>
+      </div>
+
+      <!-- Desktop Buttons -->
+      <div class="hidden md:flex mr-[108px] w-[400px] justify-between items-end">
+        <a href=""><img src="images/brochure.png" alt=""></a>
+        <a href=""><img src="images/manual.png" alt=""></a>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="lg:ml-[105px] ml-[35px] mt-[48px]">
+      <div class="overflow-x-auto scrollbar-hide md:overflow-visible">
+        <div class="specs-table">
+          <!-- Row 1 -->
+          <div class="specs-row">
+            <div class="spec-item">
+              <div class="spec-label">Product Name :</div>
+              <div class="spec-value">Sensible</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Connectivity:</div>
+              <div class="spec-value">WiFi</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Dimension :</div>
+              <div class="spec-value">4.7 x 2.7 x 2.3 inches</div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="specs-row">
+            <div class="spec-item">
+              <div class="spec-label">Temperature Range:</div>
+              <div class="spec-value">-30°C to 60°C</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Weight:</div>
+              <div class="spec-value">163 grams</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Display:</div>
+              <div class="spec-value">Color LCD Touch Display</div>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="specs-row">
+            <div class="spec-item">
+              <div class="spec-label">Humidity Range:</div>
+              <div class="spec-value">0% to 99% RH</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Storage:</div>
+              <div class="spec-value">SD Card</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Mobile App:</div>
+              <div class="spec-value">AQI India [iOS & android]</div>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="specs-row charging-row">
+            <div class="spec-item">
+              <div class="spec-label">Charging:</div>
+              <div class="spec-value">Type-C USB</div>
+            </div>
+            <div class="spec-item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section class="mt-[174px] ml-[80px] max-md:ml-[20px] max-md:mt-[80px]">
+    <div class="flex max-md:flex-col h-[471px] max-md:h-auto">
+      <!-- Left Content -->
+      <div class="w-[560px] max-md:w-full max-md:text-center">
+        <div class="w-[322px] mt-[88px] max-md:mt-0 max-md:mx-auto">
+          <h2 class="font-medium text-[40px] leading-[51px]">
+            <span class="w-[188px] bg-[#7AB26121] border-[0.5px] border-solid border-[#7AB261] rounded-[15px]">Indoor Air</span> Pollution Sensors
+          </h2>
+        </div>
+        <div class="w-[295px] h-[72px] mt-[30px] max-md:w-[90%] max-md:mx-auto max-md:h-auto">
+          <p>Sensible provides high-accuracy readings with advanced sensors, carefully calibrated to meet industry standards.</p>
+        </div>
+        <div class="mt-[30px] max-md:flex max-md:justify-center">
+          <a href=""><img src="images/buyfordevice.png" alt=""></a>
+        </div>
+      </div>
+
+      <!-- Right Image & Carousel -->
+      <div class="flex-1 flex flex-col items-center w-[720px] h-[471px] max-md:w-full max-md:mt-10 max-md:bg-transparent bg-[radial-gradient(circle_at_center,_#9CEB7850,_transparent)]">
+        <div class="ml-[14px] mt-[9px] w-[391px] h-[391px] max-md:ml-0 max-md:mt-0 max-md:w-[280px] max-md:h-[280px]">
+          <img src="images/white sensible.png" alt="Device" id="carouselImage" class="rounded-md mb-4 w-full h-full object-contain">
+        </div>
+
+        <!-- Carousel Dots for Mobile -->
+        <div class="hidden max-md:flex space-x-2 mt-4" id="carouselDots">
+          <button class="w-3 h-3 rounded-full bg-gray-400" data-index="0"></button>
+          <button class="w-3 h-3 rounded-full bg-gray-300" data-index="1"></button>
+          <button class="w-3 h-3 rounded-full bg-gray-300" data-index="2"></button>
+        </div>
+
+        <!-- Desktop Arrows -->
+        <div class="flex space-x-[16px] max-md:hidden">
+          <button id="prevBtnsens" class="p-2 bg-gray-200 w-[50px]">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <button id="nextBtnsens" class="p-2 bg-gray-200 w-[50px]">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section id="getintouch" class="get-in-touch h-[1400px] lg:h-[829px] mt-[142px]">
+        <div class=" h-[479px] bg-[#F7FDF4]">
+            <div class="w-100% flex flex-col items-center mt-[37px]">
+                <div class="w-[234px] h-[52px]">
+                    <h1 class="font-medium text-[40px]">Get In Touch</h1>
+                </div>
+                <div class="w-[358px] h-[42px]">
+                    <p class="font-medium text-[16px] text-center pt-[5px]">Please help us know what requirements you have. Our team will contact you very soon.</p>
+                </div>
+            </div> 
+        </div>
+        <div class="max-w-5xl mx-auto  mt-[-77%] sm:mt-[-27%]">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 ">
+            <div class="flex flex-col md:flex-row min-h-96">
+                <!-- Left Sidebar - Contact Information -->
+                <div class="text-white p-8 md:w-1/3 relative overflow-hidden" style="background-color: #7AB261;">
+                    <!-- Decorative circles -->
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 rounded-full opacity-30" style="background-color: rgba(122, 178, 97, 0.6);"></div>
+                    <div class="absolute -top-5 -left-5 w-20 h-20 rounded-full opacity-30" style="background-color: rgba(122, 178, 97, 0.6);"></div>
+                    
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-bold mb-4">Contact Information</h2>
+                        <p class="mb-8 text-sm" style="color: rgba(255, 255, 255, 0.8);">Looking for the air quality solutions for banks?</p>
+                        
+                        <div class="space-y-6">
+                            <!-- Phone Number -->
+                            <div class="flex items-start space-x-3">
+                                <div class="p-2 rounded-full" style="background-color: rgba(122, 178, 97, 0.7);">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm" style="color: rgba(255, 255, 255, 0.8);">Phone Number:</p>
+                                    <p class="font-medium">(+91) 73918-73918</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="flex items-start space-x-3">
+                                <div class="p-2 rounded-full" style="background-color: rgba(122, 178, 97, 0.7);">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium">info@purelogic.in</p>
+                                    <p class="font-medium">contact@purelogic.in</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Address -->
+                            <div class="flex items-start space-x-3">
+                                <div class="bg-green-400 p-2 rounded-full">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium">706, 7th Floor, Sec 10,</p>
+                                    <p class="font-medium">Rohini, Delhi 85, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Form -->
+                <div class="bg-white p-8 md:w-2/3">
+                    <form class="space-y-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Full Name</label>
+                            <input type="text" placeholder="John Trangley Windsor" class="w-full px-3 py-2 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none bg-transparent">
+                        </div>
+                        
+                        <!-- Phone and Email Row -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Your Phone No.</label>
+                                <input type="tel" placeholder="98761-89035" class="w-full px-3 py-2 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none bg-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Your Email</label>
+                                <input type="email" placeholder="john@abymo.com" class="w-full px-3 py-2 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none bg-transparent">
+                            </div>
+                        </div>
+                        
+                        <!-- Institution Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Institute/School Name</label>
+                            <input type="text" placeholder="Indian Institute of Technology, Roorkee" class="w-full px-3 py-2 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none bg-transparent">
+                        </div>
+                        
+                        <!-- Message -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea placeholder="Write your message here" rows="4" class="w-full px-3 py-2 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none bg-transparent resize-none"></textarea>
+                        </div>
+                        
+                        <!-- Send Button -->
+                        <div class="pt-4">
+                            <button type="submit" class="bg-[#7AB261] hover:bg-green-600 text-white  rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2">
+                                <img src="images/send button.png" alt="send">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+   <div class="ml[105px]">
+        <div class="ml-[5px] mt-[63px]">
+            <h2 class="font-medium text-[40px] text-[#263D4F] line-height-[52%]">You may also like</h2>
+        </div>
+        <div class="overflow-x-auto mt-[35px] px-4 scrollbar-hide">
+            <div class="flex gap-4 md:flex-wrap md:justify-evenly w-max md:w-ful">
+                    <div class="">
+                        <img src="images/dark blue bacl.png" alt="background">
+                        <p class="flex gap-[30px] mt-[10px]">Ethanol Sensor  <span><img src="images/up-right arrow.png" alt=""></span></p>
+                    </div>
+                    <div class="">
+                        <img src="images/CO blue.png" alt="">
+                        <p class="flex justify-between mt-[10px]">CO Sensor <span><img src="images/up-right arrow.png" alt=""></span></p>
+                    </div>
+                    <div class="">
+                        <img src="images/co2 blue.png" alt="">
+                        <p class="flex justify-between mt-[10px]">CO2 Sensor <span><img src="images/up-right arrow.png" alt=""></span></p>
+                    </div>
+                    <div class="">
+                        <img src="images/no2 blue.png" alt="">
+                        <p class="flex justify-between mt-[10px]">NO2 Sensor <span><img src="images/up-right arrow.png" alt=""></span></p>
+                    </div>
+                    <div class="">
+                        <img src="images/co2 blue.png" alt="">
+                        <p class="flex justify-between mt-[10px]">CO2 Sensor <span><img src="images/up-right arrow.png" alt=""></span></p>
+                    </div>
+                    <div class="">
+                        <img src="images/no2 blue.png" alt="">
+                        <p class="flex justify-between mt-10px]">NO2 Sensor <span><img src="images/up-right arrow.png" alt=""></span></p>
+                    </div>
+                    <div class="">
+                        <img src="images/co2 blue.png" alt="">
+                        <p class="flex justify-between mt-[10px]">CO2 Sensor <span><img src="images/up-right arrow.png" alt=""></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="bg-[#091205] h-[588px] mt-[108px] p-10 text-gray-400 hidden md:block">
+     <img src="images/prana-air-logo.webp" alt="" class="w-[88px] h-[68px]">
+  <div class="flex">
+    <!-- Left side -->
+    
+    <div class="flex gap-[85px] mt-[28px] mr-10 ">
+      <div class="mb-6">
+        <h4 class="text-[#EEF4F9] font-semibold mb-2">Quick Links</h4>
+        <ul class="space-y-1">
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>FAQs</li>
+          <li>Blogs</li>
+          <li>Shop</li>
+        </ul>
+      </div>
+
+      <div class="mb-6">
+        <h4 class="text-[#EEF4F9] font-semibold mb-2">Prana Air Products</h4>
+        <ul class="space-y-1">
+          <li>Air Monitors</li>
+          <li>Air Sensors</li>
+          <li>Air Drone</li>
+          <li>Weather Station</li>
+          <li>PCB Board</li>
+          <li>Fresh Air Machine</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#EEF4F9] font-semibold mb-2">Other Links</h4>
+        <ul class="space-y-1">
+          <li>Air Solutions</li>
+          <li>Data Accuracy</li>
+          <li>Case Study</li>
+          <li>Manuals</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right side green box -->
+    <div 
+      class="bg-[#20261E] mt-[22px] p-6 rounded-2xl w-[773px] h-[328px] grid grid-cols-3 gap-[18px]">
+      <div>
+        <h4 class="text-gray-100 font-semibold mb-4">India Office</h4>
+        <ul class="space-y-2 text-white">
+          <li class="flex flex-col"><span>✉ Email:</span>  <span class="text-[#D7FFC5]">info@purelogic.in</span></li>
+          <li class="flex flex-col"> <span>📞 Phone:</span>  <span class="text-[#D7FFC5]">+91 7391873918</span></li>
+          <li class="flex flex-col"> <span>📍 Address:</span>  <span class="text-[#D7FFC5]">Crown Heights, 7th Floor, 706, Rohini Sec-10, Delhi-110085, India</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">USA Office</h4>
+        <ul class="space-y-2 text-white">
+          <li class="flex flex-col"> <span>📞 Phone:</span>  <span class="text-[#D7FFC5]">+1 612 2992 211</span></li>
+          <li class="flex flex-col"> <span>📍 Address:</span>  <span class="text-[#D7FFC5]">1240 2nd Street South Unit 629, Minneapolis, MN 55415</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-gray-100 font-semibold mb-4">UK Office</h4>
+        <ul class="space-y-2 text-white">
+          <li class="flex flex-col"> <span>📞 Phone:</span>  <span class="text-[#D7FFC5]">+44 203 633 1234</span></li>
+          <li class="flex flex-col"> <span>📍 Address:</span>  <span class="text-[#D7FFC5]">Prana Air (UK) PAE5uk LTD 76 Thorold road, Ilford, IG1 4EX</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section (optional) -->
+   <div class="flex space-x-4 ml-[910px] mt-[28px]">
+    <p>find us on: </p>
+      <!-- <a href="" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
+      <a href="https://www.youtube.com/c/PranaAir" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.linkedin.com/company/pranaair" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/prana.air/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/airprana" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    <div class="flex ml-[280px] mt-[22px] items-center">
+        <div>© 2024 — Copyright Prana Air</div>
+        <div class="flex space-x-[31px] ml-[94px]">
+            <span>Terms & Conditions</span>
+            <span>Privacy Policy</span>
+            <span>Return Policy</span>
+            <span>Shipping Policy</span>
+        </div>
+    </div>
+</section>
+
+
+    <script>
+        // Currency data with conversion rates (example rates)
+        const currencyData = {
+            'INR': { symbol: '₹', rate: 1, price: '59,990.00' },
+            'USD': { symbol: '$', rate: 0.012, price: '719.88' },
+            'EUR': { symbol: '€', rate: 0.011, price: '659.89' }
+        };
+
+        let currentCurrency = 'USD';
+        let currentLanguage = 'Global';
+
+        // Desktop Currency Functions
+        function toggleCurrencyDropdown() {
+            const dropdown = document.getElementById('currencyDropdown');
+            const arrow = document.getElementById('currencyArrow');
+            
+            dropdown.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        function selectCurrency(currency, symbol) {
+            currentCurrency = currency;
+            const selectedCurrencyElement = document.getElementById('selectedCurrency');
+            const priceDisplay = document.getElementById('priceDisplay');
+            
+            // Update the currency display
+            selectedCurrencyElement.textContent = `${currency}, ${symbol}`;
+            
+            // Update the price
+            const currencyInfo = currencyData[currency];
+            priceDisplay.textContent = `${currencyInfo.symbol}${currencyInfo.price}`;
+            
+            // Close the dropdown
+            toggleCurrencyDropdown();
+        }
+
+        // Mobile Currency Functions
+        function toggleMobileCurrencyDropdown() {
+            const dropdown = document.getElementById('mobileCurrencyDropdown');
+            const arrow = document.getElementById('mobileCurrencyArrow');
+            
+            dropdown.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        function selectMobileCurrency(currency, symbol) {
+            const selectedMobileCurrencyElement = document.getElementById('selectedMobileCurrency');
+            const mobileHeaderCurrency = document.getElementById('mobileHeaderCurrency');
+            const priceDisplay = document.getElementById('priceDisplay');
+            
+            // Update the mobile currency display
+            selectedMobileCurrencyElement.textContent = `${currency}, ${symbol}`;
+            mobileHeaderCurrency.textContent = currency;
+            
+            // Update the price
+            const currencyInfo = currencyData[currency];
+            priceDisplay.textContent = `${currencyInfo.symbol}${currencyInfo.price}`;
+            
+            // Close the dropdown
+            toggleMobileCurrencyDropdown();
+        }
+
+        // Desktop Language Functions
+        function showLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.remove('hidden');
+        }
+
+        function hideLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.add('hidden');
+        }
+
+        function selectLanguage(language, countryCode) {
+            currentLanguage = language;
+            const selectedLanguageElement = document.getElementById('selectedLanguage');
+            selectedLanguageElement.textContent = language;
+            
+            // Here you can add logic to actually change the website language
+            console.log(`Language changed to: ${language} (${countryCode})`);
+        }
+
+        // Mobile Language Functions
+        function toggleMobileLanguageDropdown() {
+            const dropdown = document.getElementById('mobileLanguageDropdown');
+            const arrow = document.getElementById('mobileLanguageArrow');
+            
+            dropdown.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        function selectMobileLanguage(language, countryCode) {
+            currentLanguage = language;
+            const selectedMobileLanguageElement = document.getElementById('selectedMobileLanguage');
+            selectedMobileLanguageElement.textContent = language;
+            
+            // Close the dropdown
+            toggleMobileLanguageDropdown();
+            
+            // Here you can add logic to actually change the website language
+            console.log(`Language changed to: ${language} (${countryCode})`);
+        }
+
+        function openMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const panel = document.getElementById('menuPanel');
+            
+            menu.classList.remove('hidden');
+            setTimeout(() => {
+                panel.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const panel = document.getElementById('menuPanel');
+            
+            panel.classList.add('translate-x-full');
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const currencyDropdown = document.getElementById('currencyDropdown');
+            const currencyButton = event.target.closest('[onclick="toggleCurrencyDropdown()"]');
+            
+            if (!currencyButton && !currencyDropdown.contains(event.target)) {
+                currencyDropdown.classList.add('hidden');
+                document.getElementById('currencyArrow').classList.remove('rotate-180');
+            }
+        });
+         const carousel = document.querySelector("#carousel");
+    const dots = document.querySelectorAll("#mobileDots span");
+
+    // Arrows
+    document.querySelector("#nextBtn").addEventListener("click", () => {
+      carousel.scrollBy({ left: 315, behavior: "smooth" });
+    });
+    document.querySelector("#prevBtn").addEventListener("click", () => {
+      carousel.scrollBy({ left: -315, behavior: "smooth" });
+    });
+
+    // Dots click
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        const index = parseInt(dot.getAttribute("data-index"));
+        carousel.scrollTo({
+          left: index * 315,
+          behavior: "smooth",
+        });
+      });
+    });
+
+    // Highlight dot on scroll
+    carousel.addEventListener("scroll", () => {
+      const index = Math.round(carousel.scrollLeft / 315);
+      dots.forEach(dot => dot.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    });
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            tab.addEventListener('click', () => {
+                
+                // Remove .active from all tabs
+                document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active', 'text-black'));
+
+                // Hide all tab content first
+                document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active'); 
+                });
+
+                // Activate the clicked tab
+                tab.classList.add('active', 'text-black'); 
+                
+                // Display the corresponding content
+                const target = tab.dataset.target;
+                document.querySelector(target).classList.add('active'); 
+            });
+        });
+    // List of images to show
+      const images = ['images/white sensible.png', 'images/white sensible 2.png', 'images/white sensible 3.png'];
+    let current = 0;
+    const img = document.getElementById('carouselImage');
+
+    function changeImage(idx) {
+      img.classList.add('fade-out');
+      setTimeout(() => {
+        img.src = images[idx];
+        img.classList.remove('fade-out');
+        updateDots(idx);
+      }, 200);
+    }
+
+    function updateDots(idx) {
+      const dots = document.querySelectorAll('#carouselDots button');
+      dots.forEach((dot, i) => {
+        dot.classList.remove('bg-gray-400');
+        dot.classList.add('bg-gray-300');
+        if (i === idx) {
+          dot.classList.add('bg-gray-400');
+        }
+      });
+    }
+
+    document.getElementById('prevBtnsens').addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      changeImage(current);
+    });
+
+    document.getElementById('nextBtnsens').addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      changeImage(current);
+    });
+
+    // Mobile dots click
+    document.querySelectorAll('#carouselDots button').forEach(dot => {
+      dot.addEventListener('click', () => {
+        current = parseInt(dot.dataset.index);
+        changeImage(current);
+      });
+    });
+
+    updateDots(current); // Initial dot update
+
+    </script>
+
+    <!-- Add flag-icon CSS for better flag display -->
+    <style>
+        /* Prevent horizontal scrollbar */
+        html, body {
+            overflow-x: hidden;
+        }
+        .flag-icon {
+            background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            position: relative;
+            display: inline-block;
+            width: 1.33333333em;
+            line-height: 1em;
+        }
+        .flag-icon:before {
+            content: "\00a0";
+        }
+        .flag-icon-in {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Cpath fill='%23ff9933' d='M0 0h4v1H0z'/%3E%3Cpath fill='%23fff' d='M0 1h4v1H0z'/%3E%3Cpath fill='%23138808' d='M0 2h4v1H0z'/%3E%3Ccircle cx='2' cy='1.5' r='.3' fill='%23000080'/%3E%3C/svg%3E");
+        }
+        .flag-icon-us {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7410 3900'%3E%3Cpath fill='%23b22234' d='M0 0h7410v3900H0z'/%3E%3Cpath stroke='%23fff' stroke-width='300' d='M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0'/%3E%3Cpath fill='%233c3b6e' d='M0 0h2964v2100H0z'/%3E%3C/svg%3E");
+        }
+        .flag-icon-fr {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23002395' d='M0 0h1v2H0z'/%3E%3Cpath fill='%23fff' d='M1 0h1v2H1z'/%3E%3Cpath fill='%23ed2939' d='M2 0h1v2H2z'/%3E%3C/svg%3E");
+        }
+        .flag-icon-de {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 3'%3E%3Cpath d='M0 0h5v3H0z'/%3E%3Cpath fill='%23d00' d='M0 1h5v2H0z'/%3E%3Cpath fill='%23ffce00' d='M0 2h5v1H0z'/%3E%3C/svg%3E");
+        }
+        .flag-icon-es {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23aa151b' d='M0 0h3v2H0z'/%3E%3Cpath fill='%23f1bf00' d='M0 .5h3v1H0z'/%3E%3C/svg%3E");
+        }
+        .flag-icon-ru {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23fff' d='M0 0h3v2H0z'/%3E%3Cpath fill='%230039a6' d='M0 .67h3v1.33H0z'/%3E%3Cpath fill='%23d52b1e' d='M0 1.33h3V2H0z'/%3E%3C/svg%3E");
+        }
+        .flag-icon-jp {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23fff' d='M0 0h3v2H0z'/%3E%3Ccircle cx='1.5' cy='1' r='.6' fill='%23bc002d'/%3E%3C/svg%3E");
+        }
+        .flag-icon-pt {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23046a38' d='M0 0h1.2v2H0z'/%3E%3Cpath fill='%23da020e' d='M1.2 0H3v2H1.2z'/%3E%3C/svg%3E");
+        }
+        .flag-icon-gb {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Cpath fill='%23012169' d='M0 0h60v30H0z'/%3E%3Cpath stroke='%23fff' stroke-width='6' d='m0 0 60 30m0-30L0 30'/%3E%3Cpath stroke='%23c8102e' stroke-width='4' d='m0 0 60 30m0-30L0 30'/%3E%3Cpath stroke='%23fff' stroke-width='10' d='M30 0v30M0 15h60'/%3E%3Cpath stroke='%23c8102e' stroke-width='6' d='M30 0v30M0 15h60'/%3E%3C/svg%3E");
+        }
+        .flag-icon-ca {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Cpath fill='%23f00' d='M0 0h300v600H0zm900 0h300v600H900z'/%3E%3Cpath fill='%23fff' d='M300 0h600v600H300z'/%3E%3Cpath fill='%23f00' d='M540 180l30-24 30 24-12-39 30-24h-36l-12-39-12 39h-36l30 24z'/%3E%3C/svg%3E");
+        }
+
+        /* Custom z-index for gradient overlay */
+        .z-5 {
+            z-index: 5;
+        }
+        .fade-borders {
+             mask-image: linear-gradient(to bottom, black 85%, transparent);
+             -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent);
+             mask-composite: exclude;
+            -webkit-mask-composite: destination-in;
+        }
+             body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .specs-table {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        max-width: 1100px;
+        min-width: 700px; /* Enables horizontal scroll */
+    }
+
+    .specs-row {
+        display: flex;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .specs-row:last-child {
+        border-bottom: none;
+    }
+
+    .spec-item {
+        flex: 1;
+        padding: 12px 16px;
+        
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .spec-item:last-child {
+        border-right: none;
+    }
+
+    .spec-label {
+        color: #666;
+        font-size: 13px;
+        font-weight: normal;
+        white-space: nowrap;
+    }
+
+    .spec-value {
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .charging-row .spec-item {
+        flex: 0 0 33.33%;
+    }
+
+    .charging-row .spec-item:nth-child(2) {
+        flex: 0 0 66.66%;
+    }
+
+    /* Hide scrollbar */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+        #carousel::-webkit-scrollbar {
+            display: none;
+        }
+        #carousel {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+         #carouselImage {
+        transition: opacity 0.1s ease-in-out;
+        opacity: 1;
+    }
+    #carouselImage.fade-out {
+        opacity: 0;
+    }
+    .fade {
+        transition: all 0.5s ease-in;
+        transform: translateY(20px);
+        opacity: 0;
+        display: none;
+    }
+    .fade.active {
+        transform: translateY(0);
+        opacity: 1;
+        display: block;
+    }
+     /* Hide scrollbars */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    #carouselImage {
+      transition: opacity 0.2s ease-in-out;
+      opacity: 1;
+    }
+    #carouselImage.fade-out {
+      opacity: 0;
+    }
+    </style>
+</body>
+</html>
