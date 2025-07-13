@@ -41,13 +41,6 @@ To view or modify this project on your local machine:
 
 -----
 
-## Live Demo
-
-[🔗 View Live Demo](https://your-deployment-link.com)  
-*(Replace this with your GitHub Pages, Netlify, or Vercel live URL if deployed.)*
-
------
-
 ## Contributing
 
 This project was built for personal practice and learning. However, if you have feedback or suggestions for improvement, feel free to fork the repo and create a pull request — all contributions are welcome!
